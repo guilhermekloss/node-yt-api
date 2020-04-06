@@ -5,7 +5,7 @@ const { promisify } = require('util');
 
 const creds = require('./client_secret.json');
 
-const doc = new GoogleSpreadsheet('1ydSEU9Dbap_Y0IoDoLXFvixPur-jpC0IfzMEvoUDhmI');
+const doc = new GoogleSpreadsheet('-');
 
 (async () => {
     await promisify(doc.useServiceAccountAuth)(creds);
@@ -16,7 +16,7 @@ const doc = new GoogleSpreadsheet('1ydSEU9Dbap_Y0IoDoLXFvixPur-jpC0IfzMEvoUDhmI'
     const ids = rows.map(r => r.id).join(',');
 
     const response = await got(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${ids}&key=88999603415-a4m4fjq434bnlsdosn6ob837ke024pm6.apps.googleusercontent.com`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${ids}&key=`
     );
 
     items = JSON.parse(response.body).items;
